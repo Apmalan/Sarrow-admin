@@ -25,8 +25,9 @@ class CategoriaModel {
         //Grava no banco
         $novo->execute();
         if($novo->affected_rows > 0){
-            $id = mysqli_stmt_insert_id($novo);
-            return $id;
+            //$id = mysqli_stmt_insert_id($novo);
+            header('Location: categorias.php');
+            
         }else {
             return "Erro ao gravar no banco de dados";
         }
@@ -42,12 +43,33 @@ class CategoriaModel {
         //Grava no banco
         $novo->execute();
         if($novo->affected_rows > 0){
-            $id = mysqli_stmt_insert_id($novo);
-            return $id;
+            //$id = mysqli_stmt_insert_id($novo);
+            header("Location: categorias.php");
+            
         }else {
             return "Erro ao gravar no banco de dados";
         }
     }
+
+    public function exluir($dados){
+        var_dump($dados);
+        $conexao = Database::getConection();
+    
+        $nome = $dados['txtDeletarCategoria'];
+        $novo = $conexao->prepare("DELETE `categorias` SET `nome`=(?)");
+        //Mescla o valor da váriavel lá no comando SQL Prepare onde você colocou
+        $novo->bind_param('s',$nome);
+        //Grava no banco
+        $novo->execute();
+        if($novo->affected_rows > 0){
+            //$id = mysqli_stmt_insert_id($novo);
+            header("Location: categorias.php");
+            
+        }else {
+            return "Erro ao gravar no banco de dados";
+        }
+    }
+
     }
 
 
@@ -59,12 +81,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     // aqui é onde vai decorrer a chamada se houver um *request* POST    
     $categoria = new CategoriaModel;
     var_dump($_POST);
-    $acao = isset($_POST['acao']);
+    $acao = ($_POST['acao']);
      if($acao == "insert"){
          print_r("entrou insert");
          $categoria->incluir($_POST);                
      }if($acao == "update"){
          print_r("entrou update");
         $categoria->alterar($_POST);
- }
+ }if($acao == "delete"){
+    print_r("entrou delete");
+   $categoria->deletar($_POST);
+}
 }

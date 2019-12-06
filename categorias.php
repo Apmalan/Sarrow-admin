@@ -1,3 +1,6 @@
+<?php
+require_once realpath(dirname(__FILE__) . '/src/models/categoriaModel.php');
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -12,15 +15,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <title>MyPHP | Home</title>
 
-    <?php require_once("dist/css/css.php"); ?>
+    <?php require_once "dist/css/css.php";?>
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
-        <?php require_once("layout/navBar.php"); ?>
+        <?php require_once "layout/navBar.php";?>
 
-        <?php require_once("layout/mainSideBar.php"); ?>
+        <?php require_once "layout/mainSideBar.php";?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -62,12 +65,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </div>
                                                 <form method="POST">
                                                     <div class="modal-body">
-                                                    <input type="hidden" name="acao" value="insert">
+                                                        <input type="hidden" name="acao" value="insert">
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                    <label>Nova categoria</label> 
-                                                                    <input type="text" class="form-control" name="txtNomeCategoria" required>
+                                                                    <label>Nova categoria</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="txtNomeCategoria" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -99,7 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card-body p-0">
 
 
-                                    <table class="table">
+                                    <table id="tabelaCategoria" class="table">
                                         <thead>
                                             <tr>
                                                 <th style="width: 10px">#</th>
@@ -109,70 +113,112 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <div class="modal fade" id="modalAlterar" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Alterar</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <form method="POST">
-                                                    <div class="modal-body">
-                                                    <input type="hidden" name="acao" value="insert">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label>Alterar categoria</label> 
-                                                                    <input type="text" class="form-control" name="txtAlterarNomeCategoria" required>
+                                            <div class="modal fade" id="modalAlterar" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Alterar</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <form method="POST">
+                                                            <div class="modal-body">
+                                                                <input type="hidden" name="acao" value="insert">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label>Alterar categoria</label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="txtAlterarNomeCategoria" required>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
 
 
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Fechar</button>
-                                                        <button type="submit" class="btn btn-primary">Salvar
-                                                            mudanças</button>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Fechar</button>
+                                                                <button type="submit" class="btn btn-primary">Salvar
+                                                                    mudanças</button>
+                                                            </div>
+                                                        </form>
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                            <?php 
-                
-                require_once realpath(dirname(__FILE__).'/src/models/categoriaModel.php');
 
-                $listaCategorias = categoriaModel::listarTodos();
-                
-                ($listaCategorias);
+                                            <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Excluir</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <form method="POST">
+                                                            <div class="modal-body">
+                                                                <input type="hidden" name="acao" value="insert">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label>Deletar categoria</label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="txtDeletarCategoria" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                foreach ($listaCategorias as $categoria){
-                    ($categoria);
-                    echo "<tr>
-                         <td>" .$categoria['id_categoria']. "</td>
-                         <td>".$categoria['nome']."</td>
-                         <td>".$categoria['Status']."</td>
-                         <td> <button class='btn btn-primary' data-toggle='modal' data-target='#modalAlterar'>
-                         </i>Editar</button></td>
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Cancelar</button>
+                                                                <button type="submit" class="btn btn-primary">Deletar Categoria</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+
+$listaCategorias = categoriaModel::listarTodos();
+
+($listaCategorias);
+
+foreach ($listaCategorias as $categoria) {
+    ($categoria);
+    echo "<tr>
+                         <td>" . $categoria['id_categoria'] . "</td>
+                         <td>" . $categoria['nome'] . "</td>
+                         <td>" . $categoria['Status'] . "</td>
+                         <td> 
+                         <div class='btn-group' role='group' aria-label='Basic example'>
+                         <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#modalAlterar'><i class='fas fa-edit'></i></button>
+                         
+                         <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#modalExcluir'><i class='fas fa-trash-alt'></i></button>
+                       </div>
+                        </td>
+                         
                          </tr>";
                          
-                }
 
-                // if ($categoria['Status'] == 'ativo'){
-                //     echo '<span class="badge badge-success">Ativo</span>' . $categoria['Status'] . '</span>';
-                // }
-                // else
-                // {
-                //     echo '<span class="badge badge-danger">Inativo</span>' . $categoria['Status'] . '</span>';
-                // }
+}
 
-              ?>
+// if ($categoria['Status'] == 'ativo'){
+//     echo '<span class="badge badge-success">Ativo</span>' . $categoria['Status'] . '</span>';
+// }
+// else
+// {
+//     echo '<span class="badge badge-danger">Inativo</span>' . $categoria['Status'] . '</span>';
+// }
+
+?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -194,16 +240,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <!-- /.content-wrapper -->
 
-    <?php require_once("layout/controlSideBar.php"); ?>
+    <?php require_once "layout/controlSideBar.php";?>
 
-    <?php require_once("layout/footer.php"); ?>
+    <?php require_once "layout/footer.php";?>
 
     </div>
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
 
-    <?php require_once("dist/js/javascript.php"); ?>
+
+    <?php require_once "dist/js/javascript.php";?>
+
+    <script>
+    $(document).ready(function() {
+        $('#tabelaCategoria').DataTable();
+    });
+    </script>
+
 </body>
 
 </html>

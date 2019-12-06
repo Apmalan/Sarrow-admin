@@ -40,13 +40,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="m-0 text-dark">Categorias de eventos</h3><br>
+                            <h3 class="m-0 text-dark">Subcategorias de eventos</h3><br>
                         </div><!-- /.col -->
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                        </i>Nova categoria</button>
+                                        </i>Nova subcategoria</button>
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Nova categoria</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Nova subcategoria</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                    <label>Nova categoria</label> 
+                                                                    <label>Nova subcategoria</label> 
                                                                     <input type="text" class="form-control" name="txtNomeCategoria" required>
                                                                 </div>
                                                             </div>
@@ -126,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                    <label>Alterar categoria</label> 
+                                                                    <label>Alterar subcategoria</label> 
                                                                     <input type="text" class="form-control" name="txtAlterarNomeCategoria" required>
                                                                 </div>
                                                             </div>
@@ -158,8 +158,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          <td>" .$categoria['id_categoria']. "</td>
                          <td>".$categoria['nome']."</td>
                          <td>".$categoria['Status']."</td>
-                         <td> <button class='btn btn-primary' data-toggle='modal' data-target='#modalAlterar'>
-                         </i>Editar</button></td>
+                         <td> 
+                         <button class='btn btn-primary' data-toggle='modal' data-target='#modalAlterar'>
+                         </i>Editar
+                         </button></td>
                          </tr>";
                          
                 }
