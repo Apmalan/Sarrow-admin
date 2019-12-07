@@ -67,7 +67,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <label>Nova subcategoria</label> 
-                                                                    <input type="text" class="form-control" name="txtNomeCategoria" required>
+                                                                    <input type="text" class="form-control" name="txtNomesubcategoria" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -127,7 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <label>Alterar subcategoria</label> 
-                                                                    <input type="text" class="form-control" name="txtAlterarNomeCategoria" required>
+                                                                    <input type="text" class="form-control" name="txtAlterarNomesubcategoria" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -146,18 +146,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                             <?php 
                 
-                require_once realpath(dirname(__FILE__).'/src/models/categoriaModel.php');
+                require_once realpath(dirname(__FILE__).'/src/models/subcategoriaModel.php');
 
-                $listaCategorias = categoriaModel::listarTodos();
+                $listasubcategorias = subcategoriaModel::listarTodos();
                 
-                ($listaCategorias);
+                ($listasubcategorias);
 
-                foreach ($listaCategorias as $categoria){
+                foreach ($listasubcategorias as $subcategoria){
                     ($categoria);
                     echo "<tr>
-                         <td>" .$categoria['id_categoria']. "</td>
-                         <td>".$categoria['nome']."</td>
-                         <td>".$categoria['Status']."</td>
+                         <td>" .$subcategoria['id_categoria']. "</td>
+                         <td>".$subcategoria['nome']."</td>
+                         <td>".$subcategoria['Status']."</td>
                          <td> 
                          <button class='btn btn-primary' data-toggle='modal' data-target='#modalAlterar'>
                          </i>Editar

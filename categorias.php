@@ -103,7 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card-body p-0">
 
 
-                                    <table id="tabelaCategoria" class="table">
+                                    <table id="tabelaCategorias" class="table">
                                         <thead>
                                             <tr>
                                                 <th style="width: 10px">#</th>
@@ -167,7 +167,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <label>Deletar categoria</label>
+                                                                            <label>Excluir categoria</label>
                                                                             <input type="text" class="form-control"
                                                                                 name="txtDeletarCategoria" required>
                                                                         </div>
@@ -179,7 +179,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">Cancelar</button>
-                                                                <button type="submit" class="btn btn-primary">Deletar Categoria</button>
+                                                                <button type="submit" class="btn btn-primary">Excluir</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -191,21 +191,22 @@ $listaCategorias = categoriaModel::listarTodos();
 
 ($listaCategorias);
 
-foreach ($listaCategorias as $categoria) {
-    ($categoria);
+foreach ($listaCategorias as $categorias) {
+    ($categorias);
     echo "<tr>
-                         <td>" . $categoria['id_categoria'] . "</td>
-                         <td>" . $categoria['nome'] . "</td>
-                         <td>" . $categoria['Status'] . "</td>
+                         <td>" . $categorias['id_categoria'] . "</td>
+                         <td>" . $categorias['nome'] . "</td>
+                         <td>" . $categorias['Status'] . "</td>
                          <td> 
                          <div class='btn-group' role='group' aria-label='Basic example'>
-                         <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#modalAlterar'><i class='fas fa-edit'></i></button>
                          
-                         <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#modalExcluir'><i class='fas fa-trash-alt'></i></button>
-                       </div>
+                         <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#modalAlterar' data-placement='left' title='Editar'='Dica à esquerda'><font style='vertical-align: inherit;'><font style='vertical-align: inherit;'><i class='fas fa-edit'></i></font></font></button>
+
+                         
+                         <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#modalExcluir' data-placement='left' title='Excluir'='Dica à esquerda'><font style='vertical-align: inherit;'><font style='vertical-align: inherit;'><i class='fas fa-trash-alt'></i></font></font></button>
+                         </div>
                         </td>
-                         
-                         </tr>";
+                        </tr>";
                          
 
 }
@@ -254,7 +255,7 @@ foreach ($listaCategorias as $categoria) {
 
     <script>
     $(document).ready(function() {
-        $('#tabelaCategoria').DataTable();
+        $('#tabelaCategorias').DataTable();
     });
     </script>
 
