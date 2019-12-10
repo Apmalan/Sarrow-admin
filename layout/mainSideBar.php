@@ -11,15 +11,14 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="https://cdn.foxsports.com.br/sites/foxsports-br/files/img/scaled/630x/notes/materia/Gabigol-aplaudindo-torcida-Flamengo-720-Reuters.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">
-                <?php 
-                session_start($_SESSION);
-                var_dump($_SESSION);
-                echo $_SESSION('primeiro nome');
-                ?>
+                    <?php 
+                        echo (isset($_SESSION['primeiro_nome']) ? $_SESSION['primeiro_nome'] : "");
+                    ?>
+                </a>
             </div>
         </div>
 
@@ -64,25 +63,18 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="categorias.php" class="nav-link <?php echo((basename($_SERVER['SCRIPT_NAME']) == 'categorias.php' ? 'active' : '' ));?>">
-                                <i class="far fa-bookmark nav-icon"></i>
-                                
-                                <p>Categorias</p>     
+                                <i class="far fa-bookmark nav-icon"></i>                                
+                                <p>Categorias Eventos</p>     
                             </a>
                         </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="subcategorias.php" class="nav-link <?php echo((basename($_SERVER['SCRIPT_NAME']) == 'subcategorias.php' ? 'active' : '' ));?>">
-                                <i class="far fa-bookmark nav-icon"></i>
-                                
+                                <i class="far fa-bookmark nav-icon"></i>                                
                                 <p>Subcategorias</p>     
                             </a>
                         </li>
                     </ul>
                 </li>
-                
-                
-                
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
